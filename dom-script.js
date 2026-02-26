@@ -1,6 +1,12 @@
 const input = document.getElementById('task-input');
 const btn = document.getElementById('add-btn');
 const list = document.getElementById('task-list');
+const counter = document.getElementById('counter');
+
+//Tecaher i dont know why but my counter wont update, I tried everything but it still doesn't work :(
+function updateCounter() {
+  counter.textContent = task-list.children.length;
+}
 
 btn.addEventListener('click', () => {
   if (input.value === "") return; // Don't add empty tasks
@@ -11,7 +17,7 @@ btn.addEventListener('click', () => {
   // 2. Configure (Text and a delete button)
   li.innerHTML = `
     <span>${input.value}</span>
-    <button class="delete-btn">❌</button>
+    <button class="delete-btn">Remove</button>
   `;
 
   // 3. Attach to the list
@@ -24,9 +30,6 @@ btn.addEventListener('click', () => {
   const delBtn = li.querySelector('.delete-btn');
   delBtn.addEventListener('click', () => {
     li.remove(); // Removes the entire LI
+    updateCounter();
   });
 });
-
-function updateCounter(){
-  counter.textContent = list.children.length;
-}
